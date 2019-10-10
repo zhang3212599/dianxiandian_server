@@ -1,22 +1,12 @@
+# 点线点（服务端）Ｎode.js+ThinkJS+MySQL
 
-Application created by [ThinkJS](http://www.thinkjs.org)
+因服务器到期，微信上无法正常访问，只能本地安装预览了。
 
-## Install dependencies
+ThinkJS官网：https://thinkjs.org/
 
-```
-npm install
-```
+本项目需要配合“点线点 微信小程序”使用：https://github.com/zhang3212599/dianxiandian
 
-## Start server
-
-```
-npm start
-```
-
-## Deploy with pm2
-
-Use pm2 to deploy app on production enviroment.
-
-```
-pm2 startOrReload pm2.json
-```
+![image](https://github.com/zhang3212599/dianxiandian_server/blob/master/desImg/1.png?raw=true)
+![image](https://github.com/zhang3212599/dianxiandian_server/blob/master/desImg/2.png?raw=true)
+![image](https://github.com/zhang3212599/dianxiandian_server/blob/master/desImg/3.png?raw=true)
+![image](https://github.com/zhang3212599/dianxiandian_server/blob/master/desImg/4.png?raw=true)
