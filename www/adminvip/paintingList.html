@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+    <title>绘画列表</title>
+    <script type="text/javascript" src="js/jquery-1.11.1_1.1.js"></script>
+    <script type="text/javascript" src="js/define.js"></script>
+    <script type="text/javascript" src="js/paintingList.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
+
+
+<base target="_self" />
+</head>
+<body>
+
+<div id="bodyCon">
+    <div class="bodyHeadCon">
+        <ul>
+            <li><a href="/adminvip/index.html">用户中心列表</a></li>
+            <li class="active"><a href="/adminvip/paintingList.html">绘画列表</a></li>
+        </ul>
+    </div>
+
+    <div class="indexConA">
+        <dl>
+            <dd><label>绘画Id：</label><input type="number" name="ptId" id="ptId" /></dd>
+            <dd><label>用户Id：</label><input type="number" name="userId" id="userId" /></dd>
+            <dd><label>绘画提示语：</label><input type="text" name="ptText" id="ptText" /></dd>
+            <dt>搜索</dt>
+        </dl>
+    </div>
+
+    <div class="indexConB">
+        <table cellpadding="0" cellspacing="0" border="1" width="100%">
+            <tbody>
+                <tr>
+                    <th>绘画Id</th>
+                    <th>用户Id</th>
+                    <th>提示语</th>
+                    <th>绘"点"步数</th>
+                    <th>绘"点"图片</th>
+                    <th>绘"线"步数</th>
+                    <th>绘"线"图片</th>
+                    <th>是否"公开"绘画</th>
+                    <th>挑战次数</th>
+                    <th>评论</th>
+                    <th>创建时间</th>
+                </tr>
+            </tbody>
+            <tbody id="indexConBTable">
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="indexConPage">
+        <ul class="pagination">
+        </ul>
+    </div>
+
+    <div class="positionFixed" id="commentCon">
+        <h6><b>评论</b><em>关闭</em></h6>
+        <dl>
+        </dl>
+        <ul class="pagination">
+        </ul>
+    </div>
+
+    <div class="positionFixed" id="paintingCanvas">
+        <h6><b>画布效果</b><em>关闭</em></h6>
+        <div>
+            <canvas id="canvas" width="640" height="640"></canvas>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

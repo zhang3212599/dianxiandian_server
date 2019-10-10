@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+    <title>管理后台登录</title>
+    <script type="text/javascript" src="js/jquery-1.11.1_1.1.js"></script>
+    <script type="text/javascript" src="js/define.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
+
+<base target="_self" />
+</head>
+<body>
+
+
+<div id="logincon" >
+    <h4>管理后台登录</h4>
+    <ul>
+        <li><input id="loginName" name="" type="text" placeholder="请输入用户名" /></li>
+        <li><input id="loginPass" name="" type="password" placeholder="请输入密码" /></li>
+    </ul>
+    <h6>登录</h6>
+</div>
+
+
+<script>
+
+
+$(function(){
+
+    $(document).on("click","#logincon h6",function(){
+        var loginName = $("#loginName").val();
+        var loginPass = $("#loginPass").val();
+        $.ajax({
+            type: "post",
+            url: "/admin/auth/login",
+            data: "&username="+ loginName +"&password="+ loginPass +"",
+            dataType: "json",
+            success: function (data) {
+                if(data.returnCode == 0){
+                    textprompt("登录成功");
+                    sessionStorage.setItem("loginid",""+ data.data.id +"");
+                    sessionStorage.setItem("logintoken",""+ data.data.token +"");
+                    location.href = '/adminvip/index.html';
+
+                }else{
+                    textprompt(""+ data.returnMsg +"");
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    })
+})
+</script>
+
+
+
+
+
+</body>
+</html>

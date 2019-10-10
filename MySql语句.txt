@@ -1,0 +1,168 @@
+【用户管理中心表：】
+CREATE TABLE `adminuser` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `usertel` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `login_time` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `login_time_date` datetime DEFAULT NULL,
+  `login_ip` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+
+【用户表：】
+CREATE TABLE `userdb` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `unionid` varchar(28) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信unionid',
+  `session_key` varchar(28) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信Session_Key',
+  `openid` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信Openid',
+  `user_name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户昵称',
+  `user_img` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户头像地址',
+  `user_gender` tinyint(3) DEFAULT NULL COMMENT '用户性别',
+  `user_city` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户所在城市',
+  `user_province` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户所在省份',
+  `user_country` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户所在国家',
+  `user_language` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户使用语言',
+  `user_terminal` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户创建平台',
+  `is_painting` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户是否公开绘画',
+  `user_time` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户创建时间',
+  `user_token` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_time_date` datetime NOT NULL COMMENT '用户创建时间',
+  `user_notice` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户独立公告',
+  `user_login_time` datetime DEFAULT NULL COMMENT '用户登录时间',
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `user_name` (`user_name`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户基本信息表';
+
+
+
+
+
+
+
+
+
+//批量插入“用户”数据
+delimiter $$
+DROP PROCEDURE IF EXISTS ptest;
+CREATE PROCEDURE ptest()
+BEGIN
+DECLARE i INT;
+SET i=1;
+WHILE i < 100 DO
+INSERT INTO userdb(user_name,user_img,user_gender,user_city,is_painting,user_time,user_time_date) VALUES(CONCAT('@qq.com',i),'https://www.baidu.com/','1','上海','0','1535423505','2018-10-28 10:32:00');
+SET i=i+1;
+END WHILE;
+END $$
+
+delimiter ;
+call ptest();
+
+
+【绘画表：】
+CREATE TABLE `paintingdb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '绘画id',
+  `user_id` int(10) NOT NULL COMMENT '绘画用户id',
+  `painting_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '绘画提示语',
+  `painting_spot` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '绘点信息',
+  `painting_spotstep` int(4) NOT NULL COMMENT '绘点步数',
+  `painting_spotimg` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '绘点图片地址',
+  `painting_line` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '绘线信息',
+  `painting_linestep` int(4) NOT NULL COMMENT '绘线步数',
+  `painting_lineimg` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '绘线图片地址',
+  `is_painting` tinyint(1) NOT NULL COMMENT '用户是否公开绘画',
+  `painting_time` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '绘画创建时间',
+  `painting_time_date` datetime NOT NULL COMMENT '绘画创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='绘画详情表';
+
+
+
+
+
+
+//批量插入“绘画”数据
+delimiter $$
+DROP PROCEDURE IF EXISTS ptest;
+CREATE PROCEDURE ptest()
+BEGIN
+DECLARE i INT;
+SET i=1;
+WHILE i < 10 DO
+INSERT INTO paintingdb(user_id,painting_name,painting_spot,painting_spotstep,painting_spotimg,painting_line,painting_linestep,painting_lineimg,is_painting,painting_time,painting_time_date) VALUES('5',CONCAT('绘画',i), 'hui-dian-xinxin', '11', 'http://www.baidu.com/', 'hui-xian-xinxin', '4', 'https://www.google.com', '1', '1535423505','2018-10-28 16:32:00');
+SET i=i+1;
+END WHILE;
+END $$
+
+delimiter ;
+call ptest();
+
+
+【挑战绘画表：】
+CREATE TABLE `createddb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `painting_id` int(11) NOT NULL COMMENT '绘画编号id',
+  `user_id` int(10) NOT NULL COMMENT '用户编号id',
+  `careated_id` int(10) NOT NULL COMMENT '挑战用户id',
+  `is_success` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否挑战成功',
+  `createdtime` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '挑战时间',
+  `createdtime_date` datetime NOT NULL COMMENT '挑战时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='挑战记录表';
+
+
+
+
+
+
+delimiter $$
+DROP PROCEDURE IF EXISTS ptest;
+CREATE PROCEDURE ptest()
+BEGIN
+DECLARE i INT;
+SET i=1;
+WHILE i < 3 DO
+INSERT INTO createddb(painting_id,user_id,careated_id,is_success,createdtime,createdtime_date) VALUES('11','98', '14', '0', '1535423505','2018-10-28 16:32:00');
+SET i=i+1;
+END WHILE;
+END $$
+
+delimiter ;
+call ptest();
+
+
+【评论表：】
+CREATE TABLE `commentdb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `painting_id` int(11) NOT NULL COMMENT '绘画编号id',
+  `user_id` int(10) NOT NULL COMMENT '用户编号id',
+  `comment_text` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '评论内容',
+  `comment_time` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '评论时间',
+  `comment_time_date` datetime NOT NULL COMMENT '评论时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='评论表';
+
+
+
+
+
+delimiter $$
+DROP PROCEDURE IF EXISTS ptest;
+CREATE PROCEDURE ptest()
+BEGIN
+DECLARE i INT;
+SET i=1;
+WHILE i < 13 DO
+INSERT INTO commentdb(painting_id,user_id,comment_text,comment_time,comment_time_date) VALUES('10','96', CONCAT('吐槽品论一下了',i), '1535423505','2018-10-28 21:32:00');
+SET i=i+1;
+END WHILE;
+END $$
+
+delimiter ;
+call ptest();
+
+

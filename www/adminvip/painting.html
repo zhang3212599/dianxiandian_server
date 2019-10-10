@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+    <title>绘画提交 和 挑战</title>
+    <script type="text/javascript" src="js/jquery-1.11.1_1.1.js"></script>
+    <script type="text/javascript" src="js/define.js"></script>
+    <script type="text/javascript" src="js/painting.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
+
+
+<base target="_self" />
+</head>
+<body>
+
+<style>
+    #paintingCon { display:block; width:100%; height:auto; overflow:hidden; }
+    #paintingCon ul li { float:left; width:100%; display:block; overflow:hidden; }
+    #paintingCon ul li label { display:block; width:20%; float:left; }
+    #paintingCon ul li input { display:block; float:left; width:80%; overflow:hidden; }
+    #paintingConA h6, #paintingConC h6 { display:block; width:100px; height:80px; background-color:#f00; cursor:pointer; overflow:hidden; }
+
+    #paintingConB { background:#999; margin:50px auto; }
+    #paintingConB ul li { display:block; width:100%; height:auto; overflow:hidden; }
+    #paintingConB ul li label { display:block; width:20%; float:left; }
+    #paintingConB ul li p { display:block; float:left; width:80%; overflow:hidden; }
+</style>
+
+<div id="bodyCon">
+    <div id="paintingConA">
+        <h2>绘画-提交</h2>
+        <ul>
+            <li class="input1"><label>绘画用户id：</label><input name="" type="text" placeholder="" value="2" /></li>
+            <li class="input2"><label>绘画提示语</label><input name="" type="text" placeholder="" value="" /></li>
+
+            <li class="input3"><label>绘点信息：</label><input name="" type="text" placeholder="" value='[{"spotWidth":0.4124444580078125,"spotHeight":0.27586206896551724},{"spotWidth":0.7822222493489583,"spotHeight":0.29785108208835037},{"spotWidth":0.4515555419921875,"spotHeight":0.4957521086868675},{"spotWidth":0.27022222900390624,"spotHeight":0.44177909519361414},{"spotWidth":0.2986666666666667,"spotHeight":0.5957021641767007},{"spotWidth":0.608,"spotHeight":0.5857071311756231},{"spotWidth":0.736,"spotHeight":0.4257871064467766},{"spotWidth":0.7395555826822917,"spotHeight":0.6196901701737022}]' /></li>
+            <li class="input4"><label>绘点步数：</label><input name="" type="text" placeholder="" value="3" /></li>
+            <li class="input5"><label>绘点图片地址：</label><input name="" type="text" placeholder="" value="http://www.baidu.com/index.html" /></li>
+
+            <li class="input6"><label>绘画信息：</label><input name="" type="text" placeholder="" value='[{"spotWidth":0.256,"spotHeight":0.18190904929005225},{"spotWidth":0.20977777099609374,"spotHeight":0.34782608695652173},{"spotWidth":0.22044443766276042,"spotHeight":0.5117441431871954},{"spotWidth":0.5902222086588542,"spotHeight":0.4177910891966126},{"spotWidth":0.608,"spotHeight":0.31584208658610147},{"spotWidth":0.7004444173177083,"spotHeight":0.5997001499250375}]' /></li>
+            <li class="input7"><label>绘画步数：</label><input name="" type="text" placeholder="" value="6" /></li>
+            <li class="input8"><label>绘画图片地址：</label><input name="" type="text" placeholder="" value="http://www.baidu.com/index.html" /></li>
+        </ul>
+        <h6>提交</h6>
+    </div>
+
+
+
+    <div id="paintingConB" data-ptid="29">
+        <h2>获取 挑战 绘画 信息</h2>
+        <ul>
+            <li class="input1"><label>绘画Id：</label><p></p></li>
+            <li class="input2"><label>绘画提示语：</label><p></p></li>
+            <li class="input3"><label>绘点信息：</label><p></p></li>
+            <li class="input4"><label>绘点步数：</label><p></p></li>
+            <li class="input5"><label>绘点图片：</label><p></p></li>
+            <li class="input6"><label>绘线步数：</label><p></p></li>
+            <li class="input7"><label>绘画用户ID：</label><p></p></li>
+        </ul>
+    </div>
+
+
+    <div id="paintingConC">
+        <h2>挑战绘画-提交</h2>
+        <ul>
+            <li class="input1"><label>绘画Id：</label><input name="" type="text" placeholder="" value="29" /></li>
+            <li class="input2"><label>绘画用户Id：</label><input name="" type="text" placeholder="" value="2" /></li>
+            <li class="input3"><label>挑战绘画用户Id：</label><input name="" type="text" placeholder="" value="5" /></li>
+            <li class="input4"><label>绘线信息：</label><input name="" type="text" placeholder="" value='[{"spotWidth":0.256,"spotHeight":0.18190904929005225},{"spotWidth":0.20977777099609374,"spotHeight":0.34782608695652173},{"spotWidth":0.22044443766276042,"spotHeight":0.5117441431871954},{"spotWidth":0.5902222086588542,"spotHeight":0.4177910891966126},{"spotWidth":0.608,"spotHeight":0.31584208658610147},{"spotWidth":0.7004444173177083,"spotHeight":0.5997001499250375}]' /></li>
+            <li class="input5"><label>绘线步数：</label><input name="" type="text" placeholder="" value="3" /></li>
+            <li class="input6"><label>绘线图片地址：</label><input name="" type="text" placeholder="" value="http://www.baidu.com/index.html" /></li>
+        </ul>
+        <h6>提交</h6>
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

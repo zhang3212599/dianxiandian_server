@@ -1,0 +1,23 @@
+【后台管理API：admin】
+1、/admin/auth/login 登录、注册  dahai dahai@shouding
+2、/admin/index 用户列表
+3、/admin/paintinglist 绘画列表
+4、/admin/commentlist 绘画评论
+
+
+【前台交互API：api】
+1、/api/auth/loginBy 登录、注册（待验证）
+2、/api/workslist/workslistHot 热门绘画列表
+3、/api/workslist/workslistNew 最新绘画列表
+4、/api/workslist/worksDetails 绘画详情
+5、/api/workslist/worksDetailsTheory 绘画详情_评论详情
+6、/api/workslist/worksTheory 绘画详情_发起评论
+7、/api/admin 用户中心首屏
+8、/api/admin/adminIspt 是否开关绘画呈现
+9、/api/adminworks/adminWorksUse 我的绘画列表
+10、/api/adminworks/adminWorksHe 我挑战的绘画列表
+11、/api/adminworks/adminWorksDel 删除我的绘画Id
+12、/api/painting 获取挑战绘画信息
+13、/api/painting/paintingCord 提交我的绘画
+14、/api/painting/paintingWar 提交我挑战的绘画
+15、分享绘画
